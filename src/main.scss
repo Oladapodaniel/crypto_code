@@ -1,0 +1,618 @@
+$primary: linear-gradient(90deg, #3FE8AB 0%, #78CDCD 100%);
+$dark: #151515;
+$light-dark: #1B1B1B;
+$gray: #969696;
+$header-font: 'Inter', sans-serif;
+$body-font: 'Lato', sans-serif;
+$index: 1;
+$index2: 50;
+$index3: 100;
+$index4: 900;
+$border: 2px solid red;
+$pointer: pointer;
+
+@mixin primary-text () {
+    background: linear-gradient(90deg, #3FE8AB 0%, #78CDCD 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@mixin text-color ($color) {
+    color: $color;
+    line-height: 180%; /* 39.6px */
+    letter-spacing: 0.44px;
+}
+
+@mixin card ($radius){
+    border-radius: $radius;
+    border: 4px solid #383F3E;
+    background: #151515;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #f6f6f6 !important;
+    font-family: $body-font !important;
+
+}
+
+.container {
+    max-width: 80%;
+    margin: 0 auto
+}
+
+@each $color in primary, 'white', 'gray', 'light-gray' {
+    @if $color == primary {
+        .#{$color}-text {
+            @include primary-text;
+        }
+    } @else if $color == 'white' {
+        .#{$color}-text {
+            @include text-color(#F6F6F6);
+        }
+    } @else if ($color == 'light-gray') {
+        .#{$color}-text {
+            @include text-color(#B8B8B8)
+        }
+    } @else {
+        .#{$color}-text {
+            @include text-color(#969696);
+        }
+    }
+}
+
+// basic utilities
+@for $index from 1 through 30 {
+    .p-#{$index} {
+        padding: 3px * $index;
+    }
+}
+
+@for $index from 1 through 30 {
+    .pl-#{$index} {
+        padding-left: 3px * $index;
+    }
+}
+
+@for $index from 1 through 30 {
+    .pt-#{$index} {
+        padding-top: 3px * $index;
+    }
+}
+
+@for $index from 1 through 30 {
+    .pr-#{$index} {
+        padding-right: 3px * $index;
+    }
+}
+
+@for $index from 1 through 30 {
+    .pb-#{$index} {
+        padding-bottom: 3px * $index;
+    }
+}
+
+@for $index from 1 through 30 {
+    .px-#{$index} {
+        padding-left: 3px * $index;
+        padding-right: 3px * $index;
+    }
+}
+
+@for $index from 1 through 30 {
+    .py-#{$index} {
+        padding-top: 3px * $index;
+        padding-bottom: 3px * $index;
+    }
+}
+
+@for $index from 1 through 30 {
+    .m-#{$index} {
+        margin: 3px * $index;
+    }
+}
+
+@for $index from 1 through 30 {
+    .ml-#{$index} {
+        margin-left: 3px * $index;
+    }
+}
+
+@for $index from 1 through 30 {
+    .mt-#{$index} {
+        margin-top: 3px * $index;
+    }
+}
+
+@for $index from 1 through 30 {
+    .mr-#{$index} {
+        margin-right: 3px * $index;
+    }
+}
+
+@for $index from 1 through 30 {
+    .mb-#{$index} {
+        margin-bottom: 3px * $index;
+    }
+}
+
+@for $index from 1 through 30 {
+    .mx-#{$index} {
+        margin-left: 3px * $index;
+        margin-right: 3px * $index;
+    }
+}
+
+@for $index from 1 through 30 {
+    .my-#{$index} {
+        margin-top: 3px * $index;
+        margin-bottom: 3px * $index;
+    }
+}
+
+@while $index2 > 0 {
+    .s-#{$index2} {
+        font-size: $index2 * 1px;
+    }
+    $index2: $index2 - 1;
+}
+
+@while $index3 > 0 {
+    .w-#{$index3} {
+        width: $index3 * 1%
+    }
+    $index3: $index3 - 10
+}
+
+@while $index4 > 0 {
+    .font-weight-#{$index4} {
+        font-weight: $index4
+    }
+    $index4: $index4 - 100
+}
+
+// font
+
+.header-font {
+    font-family: $header-font !important;
+    text-transform: capitalize;
+}
+
+// button
+
+button.primary {
+    border-radius: 6px;
+    background: $primary;
+    border: none;
+    color: #111;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.hero-bg {
+    background: $dark;
+}
+
+.main-bg {
+    background: $light-dark
+}
+
+.cursor {
+    cursor: $pointer;
+}
+
+@each $i in block,
+flex,
+grid,
+inline,
+inline-block,
+hidden {
+    @if $i ==hidden {
+        .#{$i} {
+            display: none;
+        }
+    }
+
+    @else {
+        .#{$i} {
+            display: $i;
+        }
+    }
+}
+
+@each $i in around,
+between,
+center {
+    @if $i ==center {
+        .justify-content-#{$i} {
+            justify-content: $i;
+        }
+    }
+
+    @else {
+        .justify-content-#{$i} {
+            justify-content: space-#{$i};
+        }
+    }
+}
+
+@each $i in start,
+end,
+center,
+baseline,
+stretch,
+inherit,
+normal {
+    .align-items-#{$i} {
+        align-items: $i;
+    }
+}
+
+@each $i in wrap,
+wrap-reverse,
+nowrap,
+initial,
+inherit {
+    .flex-#{$i} {
+        flex-wrap: $i;
+    }
+}
+
+@each $i in left,
+center,
+right {
+    .text-#{$i} {
+        text-align: $i;
+    }
+}
+
+// others
+nav {
+    ul {
+        list-style: none;
+        display: flex;
+
+        li {
+            margin-left: 20px
+        }
+    }
+
+    & .hamburger {
+     display: none;       
+    }
+}
+
+div.hero-section {
+    grid-template-columns: 2fr 3fr;
+    column-gap: 40px;
+}
+
+.s--7 {
+    font-size: .7em;
+}
+
+.s--8 {
+    font-size: .8em;
+}
+
+img.blur_bg_1 {
+    position: absolute;
+    top: 71px;
+    left: 266px;
+    width: 537px;
+}
+
+.sponsors {
+    width: 130px
+}
+
+.card {
+    @include card(40px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center
+}
+
+.crypto-card {
+    grid-template-columns: repeat(3, minmax(auto, 300px));
+    column-gap: 50px;
+    position: relative;
+    place-content: center;
+}
+
+.blur_bg_2 {
+    position: absolute;
+    top: -300px;
+    left: 5%;
+    z-index: 0;
+    width: 90%;
+}
+
+.earnings {
+    grid-template-columns: 45% 45%;
+    column-gap: 5%;
+    align-items: center;
+
+    .flex {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 50px;
+    }
+}
+
+.newsletter {
+    @include card(20px);
+    margin-bottom: 23px;
+    padding: 10px 20px;
+    position: relative;
+
+    & input {
+        height: 41px;
+        background: $dark;
+        border: none;
+        outline: none;
+        color: white;
+        width: 50%;
+
+        &::placeholder {
+            color: $gray !important;
+            font-style: italic;
+        }
+    }
+}
+
+.blur_bg_3 {
+    position: absolute;
+    top: -300px;
+    left: 100px;
+    z-index: 0;
+    width: 600px;
+}
+
+.footer {
+    grid-template-columns: 3fr repeat(3, minmax(100px, 1.5fr)) 2fr;
+    column-gap: 40px;
+    .footer-items {
+        div {
+            text-transform: uppercase;
+        }
+    }
+    
+}
+
+.copyright {
+    border: {
+        top: 2px solid #383F3E
+    }
+
+    & a {
+        text-decoration: none;
+    }
+}
+
+.box{
+    border: 2px solid red;
+    width: 70px;
+    height: 70px;
+    // position: absolute;
+
+}
+div.anime {
+    // display: inline-block;
+    .box{
+        // border: 2px solid red;
+        width: 30px;
+        height: 30px;
+        // position: absolute;
+
+    }
+    .orange {
+       background-color: orange
+   }
+    .yellow {
+       background-color: yellow
+   }
+    .pink {
+       background-color: pink
+   }
+    .blue {
+       background-color: blue
+   }
+    .brown {
+       background-color: brown
+   }
+} 
+
+
+// body{
+//     background-color:grey;
+//     margin:0;
+//   }
+  
+//   section{
+//     position:relative;
+//     width:100%;
+//     height:100vh;
+//     border-bottom:1px solid black;
+//     text-align:center;
+//   }
+//   h1{
+//     position: absolute;
+//     width: 100%;
+//     font-size: 18vw;
+//     font-family: sans-serif;
+//     line-height: 15vw;
+//     color: #a7a7a733;
+//     margin: 0px 0 0 0px;
+//   }
+  
+//   .wrap{
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     width: fit-content;
+//     overflow:hidden;
+//   }
+//   .wrap h2{
+//     position:relative;
+//     font-family: sans-serif;
+//     font-size: 8vw;
+//     margin:0;
+//   }
+
+.gear {
+    position: relative;
+    z-index: 1;
+}
+// N/A	<576px
+// 	sm	≥576px
+// 	md	≥768px
+// 	lg	≥992px
+//  	xl	≥1200px
+// 	xxl	≥1400px
+
+@media (max-width: 576px) {
+    nav {
+        & .nav-items {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: $dark;
+            padding-top: 70px;
+            padding-bottom: 40px;
+            
+            & img {
+                display: block;
+                position: absolute;
+                right: 57px;
+                top: 22px;
+            }
+        }
+
+        ul {
+            flex-direction: column;
+            
+            li {
+                margin-left: 0;
+                text-align: center;
+                padding: 15px;
+            }
+        }
+        & .nav-action {
+            display: flex;
+        }
+        
+        & .nav-action2 {
+            display: none;
+        }
+        
+        & .hamburger {
+            display: block;       
+        }
+        
+        ul.desktop-nav {
+            display: none;
+        }    
+        
+    }
+    
+    div.hero-section {
+        grid-template-columns: 100%;
+    }
+
+    img.blur_bg_1 {
+        position: absolute;
+        top: 370px;
+        left: 10%;
+        width: 300px;
+    }
+    
+    .header-font {
+        text-align: center;
+        font-size: 40px;
+    }
+
+    .crypto-card {
+        grid-template-columns: 100%;
+        // column-gap: 40px
+    }
+    
+    .blur_bg_2 {
+        position: absolute;
+        top: -200px;
+        z-index: 0;
+        width: 100%;
+    }
+
+    .newsletter {
+        flex-direction: column;
+
+        & input {
+            width: 100%;
+        }
+    }
+
+    .blur_bg_3 {
+        width: 300px;
+        top: -150px;
+        left: -20px;
+    }
+
+    .footer {
+        grid-template-columns: repeat(2, 50%);
+        row-gap: 40px;
+
+        & .header-font {
+            font-size: 20px;
+            text-align: left;
+        }
+
+    }
+}
+
+@media (min-width: 577px)and (max-width: 992px) {
+    img.blur_bg_1 {
+        position: absolute;
+        top: 160px;
+        left: 13%;
+        width: 427px;
+    }
+    
+    .crypto-card {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 40px
+    }
+
+    .blur_bg_3 {
+        width: 500px;
+    }
+
+    .footer {
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 40px;
+    }
+}
+
+@media (max-width: 992px) {
+    .earnings {
+        grid-template-columns: 100%;
+    
+        .flex {
+            align-items: center;
+            text-align: center;
+            margin-top: 40px;
+        }
+    } 
+}
