@@ -253,7 +253,7 @@ ScrollTrigger.create({
     trigger: ".geared",
     scrub: 2,
     // toggleActions: 'play pause none none',
-    markers: true,
+    // markers: true,
     start: "top center",
     // end: '=+500',
     pin: ".gear",
@@ -261,13 +261,13 @@ ScrollTrigger.create({
     id: 'geared'
 })
 geartl.to(".gear", {
-    yPercent: 80,
+    yPercent: 60,
     scale: .3,
     // ease: 'bounce'
 })
 geartl.to(".gear", {
     rotate: 2000,
-    x: 300
+    x: 450
 })
     .to(".gear", {
         scale: 1.5,
@@ -495,7 +495,7 @@ let sections = gsap.utils.toArray(".section").forEach((elem, index) => {
         scrub: 2,
         pin: true,
         // toggleActions: 'restart pause reverse pause',
-        markers: true,
+        // markers: true,
         // pinSpacsing: false,
         id: 'H-SCRoLL'
     });
@@ -512,13 +512,157 @@ let sections = gsap.utils.toArray(".section").forEach((elem, index) => {
             xPercent: -100,
             // delay: 0
         }, 0)
-        // .to(".flip-y", {
-        //     rotate: 20,
-        //     // duration: 10
-        // })
     }
+    //  else if (index === 1) {
+    //     tl3.to('.iim', {
+    //         backgroundColor: 'red'
+    //     }, 0)
+    // }
 })
 
+let tl4 = gsap.timeline()
+ScrollTrigger.create({
+    animation: tl4,
+    trigger: '.crypto-card-section',
+    start: "top top+=300",
+    // end: `+=4000`,
+    scrub: 2,
+    pin: true,
+    // toggleActions: 'restart pause reverse pause',
+    // markers: true,
+    // pinSpacsing: false,
+    id: 'crypto-cards',
+    // onEnter: () => {
+    //     gsap.set(".next-element", { opacity: 0, y: 100 }); 
+    // },
+    // onLeave: () => {
+    //     console.log('lefttt')
+    //     gsap.to(".next-element", { opacity: 1, y: 0, duration: 1 });
+    //   }
+});
+
+// Initial state for the next element
+// gsap.set(".next-element", { opacity: 0, y: 100 }); // Adjust the y value as needed
+
+tl4.from(".card-2", {
+    y: -400
+})
+
+tl4.from(".crypto-card-header", {
+    opacity: 0,
+    scale: 0
+})
+tl4.from(".crypto-card .card.card-1", {
+    x: -500,
+    opacity:0
+})
+tl4.from(".crypto-card .card.card-3", {
+    x: 500,
+    opacity:0
+})
+// let cryptoCardSections = gsap.utils.toArray(".crypto-card .card").forEach((elem, index) => {
+//     if (index === 0) {
+//         // tl4.to(elem, {
+//             //     x: 0
+//             // })
+//         }
+//         if (index === 2) {
+//     }
+// })
+
+let tl5 = gsap.timeline()
+ScrollTrigger.create({
+    animation: tl5,
+    trigger: '.track',
+    start: "top top+=300",
+    // end: `+=4000`,
+    scrub: 2,
+    pin: true,
+    // toggleActions: 'restart pause reverse pause',
+    // markers: true,
+    id: 'track-section',
+});
+tl5.from('.track-image', {
+    scale: .1,
+    opacity: 0
+})
+tl5.from('.track-text', {
+    x: 100,
+    stagger: .4,
+    opacity: 0
+})
+
+let tl6 = gsap.timeline()
+ScrollTrigger.create({
+    animation: tl6,
+    trigger: '.trust',
+    start: "top top",
+    // end: `+=4000`,
+    scrub: 2,
+    pin: true,
+    // toggleActions: 'restart pause reverse pause',
+    // markers: true,
+    id: 'trust-section',
+});
+tl6.from('.trust-image', {
+    scale: .1,
+    opacity: 0
+})
+tl6.from('.trust-text', {
+    x: 100,
+    stagger: .4,
+    opacity: 0
+})
+// tl6.to('.know-more', {
+    //     x: 1060,
+    //     y: 450,
+    // ease: 'back.out'
+    // delay: 10,
+    // duration:10000
+    // })
+    
+    let tl7 = gsap.timeline()
+    ScrollTrigger.create({
+        animation: tl7,
+        trigger: '.last-section',
+        start: "center center",
+        // end: `+=4000`,
+        scrub: 2,
+        pin: true,
+        // toggleActions: 'restart pause reverse pause',
+        markers: true,
+        id: 'last-section',
+    });
+const text = new SplitType('.subscription');
+console.log(text, 'texttt')
+
+tl7.from('.subscription-header', {
+    opacity: 0,
+    scale: 0
+})
+tl7.to('.word', {
+    y: 0,
+    stagger: .1,
+    // delay: 2,
+    duration: .6
+})
+
+// let tl7 = gsap.timeline()
+// ScrollTrigger.create({
+//     animation: tl7,
+//     trigger: '.trust-child',
+//     start: "top center",
+//     // end: `+=4000`,
+//     scrub: 2,
+//     pin: true,
+//     // toggleActions: 'restart pause reverse pause',
+//     markers: true,
+//     id: 'read-more-button',
+// });
+// tl7.to('.know-more', {
+//     x: 100,
+//     // opacity: 0
+// })
 
 
 ///////////////////////////////////////////////////////////////////////////////
